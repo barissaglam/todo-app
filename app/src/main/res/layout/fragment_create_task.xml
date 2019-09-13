@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="barissaglam.todo.ui.createtask.CreateTaskViewModel" />
+
+        <import type="android.text.TextUtils" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+
+                <ImageButton
+                    android:id="@+id/btnCancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="@dimen/toolbarLeftItemMarginStart"
+                    android:layout_marginTop="@dimen/toolbarLeftItemMarginTopBottom"
+                    android:layout_marginBottom="@dimen/toolbarLeftItemMarginTopBottom"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="@dimen/toolbarItemPadding"
+                    android:src="@drawable/ic_close_gray_24dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/btnDone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/toolbarLeftItemMarginTopBottom"
+                    android:layout_marginEnd="@dimen/toolbarRightItemMarginEnd"
+                    android:layout_marginBottom="@dimen/toolbarLeftItemMarginTopBottom"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:onClick="@{()->viewModel.onCreateNewTask()}"
+                    android:padding="@dimen/toolbarItemPadding"
+                    android:src="@drawable/ic_done_gray_24dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvPageTitle"
+                    style="@style/PageTitleStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:text="@string/toolbar_title_new_task"
+                    app:layout_constraintBottom_toBottomOf="@+id/btnCancel"
+                    app:layout_constraintEnd_toStartOf="@+id/btnDone"
+                    app:layout_constraintStart_toEndOf="@+id/btnCancel"
+                    app:layout_constraintTop_toTopOf="@+id/btnCancel" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <LinearLayout
+                    android:paddingStart="@dimen/fm_marginStartEndPage"
+                    android:paddingEnd="@dimen/fm_marginStartEndPage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        fontPath="fonts/Ubuntu-Medium.ttf"
+                        android:textSize="@dimen/textSizeSmall"
+                        android:id="@+id/fcc_tvInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/ftd_marginBetweenItemsXExtraBig"
+                        android:text="What task are you planning to perform?"
+                        android:textColor="@color/colorTextLightDis" />
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/fct_edtTaskText"
+                        fontPath="fonts/Ubuntu-Medium.ttf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/ftd_marginBetweenItemsXExtraBig"
+                        android:background="@android:color/transparent"
+                        android:hint="@string/hint_edt_new_task_name"
+                        android:inputType="textCapSentences"
+                        android:text="@={viewModel.taskResult.taskName}"
+                        android:textSize="@dimen/createEdtTextSize" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/ftd_marginBetweenItemsBig">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/fct_chipDueDate"
+                            style="@style/CreateChipStyle"
+                            chipIconVisibility="@{viewModel.taskResult.taskDueDate == null || TextUtils.isEmpty(viewModel.taskResult.taskDueDate)}"
+                            setTextDateWithFormat="@{viewModel.taskResult.taskDueDate}"
+                            setTextIfEmpty="@{@string/no_due_date}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/textSizeSmall"
+                            app:chipCornerRadius="@dimen/chipCornerRadius"
+                            app:chipIcon="@drawable/ic_event_gray_24dp"
+                            app:chipIconTint="@color/colorPrimary"
+                            app:closeIconEnabled="true"
+                            app:closeIconVisible="false" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/fct_chipReminder"
+                            style="@style/CreateChipStyle"
+                            chipIconVisibility="@{viewModel.taskResult.reminderDate == null || TextUtils.isEmpty(viewModel.taskResult.reminderDate)}"
+                            setTextDateWithFormat="@{viewModel.taskResult.reminderDate}"
+                            setTextIfEmpty="@{@string/no_reminder}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/textSizeSmall"
+                            app:chipCornerRadius="@dimen/chipCornerRadius"
+                            app:chipIcon="@drawable/ic_notifications_outline_gray_24dp"
+                            app:chipIconTint="@color/colorPrimary"
+                            app:closeIconEnabled="true"
+                            app:closeIconVisible="false" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/fct_chipPriority"
+                            style="@style/CreateChipStyle"
+                            chipIconVisibility="@{viewModel.taskResult.priority == null || TextUtils.isEmpty(viewModel.taskResult.priority)}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.taskResult.priority == null ?  @string/no_priority : (TextUtils.isEmpty(viewModel.taskResult.priority) ? @string/no_priority : viewModel.taskResult.priority)}"
+                            android:textSize="@dimen/textSizeSmall"
+                            app:chipCornerRadius="@dimen/chipCornerRadius"
+                            app:chipIcon="@drawable/ic_priority_gray_24dp"
+                            app:chipIconTint="@color/colorPrimary"
+                            app:closeIconEnabled="true"
+                            app:closeIconVisible="false" />
+
+                    </com.google.android.material.chip.ChipGroup>
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</layout>

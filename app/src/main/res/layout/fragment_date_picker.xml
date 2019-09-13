@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="barissaglam.todo.ui.selectdatetime.DatePickerViewModel" />
+
+        <import type="android.text.TextUtils" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_rounded_bg"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/fdp_paddingContentTopBottom"
+        android:paddingBottom="@dimen/fdp_paddingContentTopBottom">
+
+        <CalendarView
+            android:id="@+id/fdp_calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner"
+            android:spinnersShown="false" />
+
+        <com.google.android.material.chip.Chip
+            android:textSize="@dimen/textSizeSmall"
+            android:text="@{viewModel.dateSelectedEvent.selectedReminderHour == null ? @string/not_selected : viewModel.dateSelectedEvent.selectedReminderHour + `:` + viewModel.dateSelectedEvent.selectedReminderMinute}"
+            app:chipCornerRadius="@dimen/chipCornerRadius"
+            android:id="@+id/fdp_chipSelectTaskTime"
+            style="@style/DetailChipStyle"
+            fontPath="Ubuntu-Medium.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/fdp_chipsMarginStartEnd"
+            android:layout_marginEnd="@dimen/fdp_chipsMarginStartEnd"
+            android:gravity="center_vertical"
+            app:chipIcon="@drawable/ic_clock_gray_24dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fdp_marginTopActionButtonsContainer"
+            android:gravity="end"
+            app:allowStacking="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/fdp_btnCancel"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                fontPath="Ubuntu-Medium.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.0"
+                android:text="Cancel"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTextDarkDis"
+                android:textSize="@dimen/textSizeMedium" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/fdp_btnDone"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                fontPath="Ubuntu-Medium.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.0"
+                android:text="Done"
+                android:textAllCaps="false"
+                android:textSize="@dimen/textSizeMedium" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

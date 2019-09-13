@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textSizeExtraSmall">12sp</dimen>
+    <dimen name="textSizeSmall">13sp</dimen>
+    <dimen name="textSizeMedium">14sp</dimen>
+    <dimen name="textSizeLarge">16sp</dimen>
+    <dimen name="textSizeExtraLarge">21sp</dimen>
+    <dimen name="taskItemLeftViewWidth">3dp</dimen>
+
+    <dimen name="createEdtTextSize">32sp</dimen>
+
+    <dimen name="radiusOfDialog">12dp</dimen>
+    <dimen name="textSizeOfDialog">14sp</dimen>
+    <dimen name="textSizeOfDialogButton">14sp</dimen>
+    <dimen name="textSizeOfDialogTitle">18sp</dimen>
+    <dimen name="createChipStartEndPadding">4dp</dimen>
+
+    <dimen name="toolbarLeftItemMarginStart">8dp</dimen>
+    <dimen name="toolbarRightItemMarginEnd">8dp</dimen>
+    <dimen name="toolbarLeftItemMarginTopBottom">8dp</dimen>
+    <dimen name="toolbarItemPadding">8dp</dimen>
+    <dimen name="alertDialogTitleMarginBottom">8dp</dimen>
+    <dimen name="chipCornerRadius">4dp</dimen>
+    <dimen name="pageMarginStartEnd">16dp</dimen>
+    <dimen name="pageMarginStartEndBig">24dp</dimen>
+
+    <!-- Item_Tasks.xml -->
+    <dimen name="it_marginStartEndCardView">12dp</dimen>
+    <dimen name="it_cardViewCornerRadius">4dp</dimen>
+    <dimen name="it_cardViewElevation">2dp</dimen>
+    <dimen name="it_marginStartTaskName">16dp</dimen>
+    <dimen name="it_marginEndTaskName">8dp</dimen>
+    <dimen name="it_marginTopBottomTaskName">16dp</dimen>
+
+    <!-- Item_TaskList_Header.xml -->
+    <dimen name="ith_marginTopStartEndTitle">12dp</dimen>
+    <dimen name="ith_paddingTitle">4dp</dimen>
+
+    <!-- FragmentTaskDetail.xml -->
+    <dimen name="ftd_chipStartEndPadding">16dp</dimen>
+    <dimen name="ftd_chipIconEndPadding">8dp</dimen>
+    <dimen name="ftd_otherItemStartEndPadding">16dp</dimen> <!-- chipIconEndPadding + defaultOwnPadding -->
+    <dimen name="ftd_otherItemMarginTop">16dp</dimen>
+    <dimen name="ftd_marginBetweenItemsNormal">8dp</dimen>
+    <dimen name="ftd_marginBetweenItemsBig">16dp</dimen>
+    <dimen name="ftd_marginBetweenItemsExtraBig">24dp</dimen>
+    <dimen name="ftd_marginBetweenItemsXExtraBig">32dp</dimen>
+
+    <!-- ItemTaskStep.xml -->
+    <dimen name="its_iconPadding">8dp</dimen>
+
+    <!-- ItemListColor.xml -->
+    <dimen name="ilc_imageContainerMargin">8dp</dimen>
+    <dimen name="ilc_imageMargin">4dp</dimen>
+
+    <!-- FragmentTimePicker.xml -->
+    <dimen name="ftp_paddingContentTopBottom">24dp</dimen>
+    <dimen name="ftp_marginTopActionButtonsContainer">8dp</dimen>
+
+    <!-- FragmentDatePicker.xml -->
+    <dimen name="fdp_paddingContentTopBottom">24dp</dimen>
+    <dimen name="fdp_marginTopActionButtonsContainer">8dp</dimen>
+    <dimen name="fdp_chipsMarginStartEnd">16dp</dimen>
+
+    <!-- FragmentMenu.xml -->
+    <dimen name="fm_contentPaddingBottom">8dp</dimen>
+    <dimen name="fm_titlePadding">16dp</dimen>
+    <dimen name="fm_topLineMarginTop">8dp</dimen>
+    <dimen name="fm_marginStartEndPage">16dp</dimen>
+
+    <!-- FragmentCreateList.xml -->
+    <dimen name="fcl_marginStartEndRecycler">8dp</dimen> <!--  content margin(16dp) - ItemListColor.xml(margin)-->
+</resources>

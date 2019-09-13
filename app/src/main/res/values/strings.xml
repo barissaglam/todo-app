@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ToDo</string>
+
+    <!-- Toolbar Title -->
+    <string name="toolbar_title_new_task">New Task</string>
+    <string name="toolbar_title_new_category">New Category</string>
+
+    <!-- EditText Hint -->
+    <string name="hint_edt_new_task_name">Task name…</string>
+    <string name="hint_edt_new_category_name">Category name…</string>
+
+    <string name="no_priority">No priority</string>
+    <string name="no_time">No time</string>
+    <string name="no_due_date">No due date</string>
+    <string name="no_reminder">No reminder</string>
+    <string name="not_selected">Not selected</string>
+
+    <string name="home_task_count">You have %s tasks</string>
+
+</resources>

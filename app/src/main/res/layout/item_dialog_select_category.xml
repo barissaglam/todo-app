@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="barissaglam.todo.model.entities.CategoryEntity" />
+
+        <variable
+            name="callback"
+            type="barissaglam.todo.ui.selectcategory.SelectCategoryAdapter.SelectCategoryItemCallback" />
+
+        <variable
+            name="ItemPos"
+            type="Integer" />
+
+        <variable
+            name="SelectedItemPos"
+            type="Integer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:onClick="@{()->callback.onClickSelectedCategoryItem(data,ItemPos)}"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:orientation="vertical">
+
+        <ImageView
+            imageViewTint="@{data.categoryColor}"
+            android:id="@+id/imgCategoryColor"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCategoryName"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center_vertical"
+            android:text="@{data.categoryName}"
+            app:layout_constraintBottom_toBottomOf="@+id/imgCategoryColor"
+            app:layout_constraintEnd_toStartOf="@+id/radioButton"
+            app:layout_constraintStart_toEndOf="@+id/imgCategoryColor"
+            app:layout_constraintTop_toTopOf="@+id/imgCategoryColor" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:onClick="@{()->callback.onClickSelectedCategoryItem(data,ItemPos)}"
+            android:checked="@{ItemPos == SelectedItemPos}"
+            android:id="@+id/radioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

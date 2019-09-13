@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="barissaglam.todo.model.result.TaskResult" />
+
+        <variable
+            name="callback"
+            type="barissaglam.todo.ui.home.HomeAdapter.HomeItemCallback" />
+
+        <variable
+            name="ItemPos"
+            type="Integer" />
+
+        <variable
+            name="HideDetail"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/it_marginStartEndCardView"
+        android:layout_marginEnd="@dimen/it_marginStartEndCardView"
+        android:background="?attr/selectableItemBackground"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha="@{data.done ? 0.5f : 1.0f}"
+            android:onClick="@{()->callback.onShowTaskDetail(data)}">
+
+
+            <ImageButton
+                android:onClick="@{()->callback.onUpdateTaskDone(data, ItemPos)}"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:id="@+id/checkBoxDone"
+                changeCheckState="@{data.done}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="8dp"
+                android:src="@drawable/ic_check_circle_colored_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@+id/checkBoxDone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/checkBoxDone"
+                app:layout_constraintTop_toTopOf="@+id/checkBoxDone">
+
+                <TextView
+                    android:textColor="@color/colorTextDarkPrimary"
+                    android:id="@+id/itsk_taskName"
+                    textFont="@{data.done}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{data.taskName,default=TEST}"
+                    android:textSize="@dimen/textSizeMedium" />
+
+                <!-- visibleGone="@{!data.done &amp;&amp; !HideDetail &amp;&amp; (data.taskDueDate != null || data.reminderDate != null)}" -->
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        setTextDateWithFormat="@{data.taskDueDate}"
+                        setTextIfEmpty="@{@string/no_due_date}"
+                        textFont="@{data.done}"
+                        visibleGone="@{data.taskDueDate != null}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:drawableStart="@drawable/ic_event_primary_14dp"
+                        android:drawablePadding="8dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        visibleGone="@{data.taskDueDate != null &amp;&amp; data.reminderDate != null}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="•" />
+
+                    <ImageView
+                        android:layout_marginEnd="8dp"
+                        visibleGone="@{data.reminderDate != null}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_notifications_outline_primary_14dp" />
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            style="@style/styleLine" />
+
+    </LinearLayout>
+</layout>

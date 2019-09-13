@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="barissaglam.todo.ui.createcategory.CreateCategoryViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+
+                <ImageButton
+                    android:id="@+id/btnCancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="@dimen/toolbarLeftItemMarginStart"
+                    android:layout_marginTop="@dimen/toolbarLeftItemMarginTopBottom"
+                    android:layout_marginBottom="@dimen/toolbarLeftItemMarginTopBottom"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="@dimen/toolbarItemPadding"
+                    android:src="@drawable/ic_close_gray_24dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/btnDone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/toolbarLeftItemMarginTopBottom"
+                    android:layout_marginEnd="@dimen/toolbarRightItemMarginEnd"
+                    android:layout_marginBottom="@dimen/toolbarLeftItemMarginTopBottom"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="@dimen/toolbarItemPadding"
+                    android:src="@drawable/ic_done_gray_24dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/btnCancel"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/btnCancel" />
+
+
+                <TextView
+                    android:id="@+id/tvPageTitle"
+                    style="@style/PageTitleStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:text="@string/toolbar_title_new_category"
+                    app:layout_constraintBottom_toBottomOf="@+id/btnCancel"
+                    app:layout_constraintEnd_toStartOf="@+id/btnDone"
+                    app:layout_constraintStart_toEndOf="@+id/btnCancel"
+                    app:layout_constraintTop_toTopOf="@+id/btnCancel" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:paddingStart="@dimen/fm_marginStartEndPage"
+                android:paddingEnd="@dimen/fm_marginStartEndPage"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    fontPath="fonts/Ubuntu-Medium.ttf"
+                    android:textSize="@dimen/textSizeSmall"
+                    android:id="@+id/fcc_tvInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ftd_marginBetweenItemsXExtraBig"
+                    android:text="Category will be help you group related task!"
+                    android:textColor="@color/colorTextLightDis" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fcc_edtCategoryName"
+                    fontPath="fonts/Ubuntu-Medium.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/ftd_marginBetweenItemsExtraBig"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/hint_edt_new_category_name"
+                    android:inputType="textCapSentences"
+                    android:text="@={viewModel.categoryName}"
+                    android:textSize="@dimen/createEdtTextSize" />
+
+                <ImageView
+                    imageViewTint="@{viewModel.selectedColor}"
+                    android:id="@+id/fcc_imgSelectColor"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="@dimen/ftd_marginBetweenItemsExtraBig"
+                    android:src="@drawable/circle" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</layout>

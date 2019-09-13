@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/bottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorItem"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/pageMarginStartEnd"
+        android:paddingTop="16dp"
+        android:paddingEnd="@dimen/pageMarginStartEnd">
+
+        <TextView
+            fontPath="fonts/Ubuntu-Medium.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sort by"
+            android:textSize="@dimen/textSizeSmall"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/fm_btnSortCustom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            android:text="Custom"
+            android:textColor="@color/colorTextDarkPrimary"
+            android:textSize="@dimen/textSizeSmall" />
+
+        <TextView
+            android:id="@+id/fm_btnSortDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            android:text="Date"
+            android:textColor="@color/colorTextDarkPrimary"
+            android:textSize="@dimen/textSizeSmall" />
+
+        <TextView
+            android:id="@+id/fm_btnSortPriority"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            android:text="Priority"
+            android:textColor="@color/colorTextDarkPrimary"
+            android:textSize="@dimen/textSizeSmall" />
+
+        <View style="@style/styleLine" />
+
+        <TextView
+
+            fontPath="fonts/Ubuntu-Medium.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Options"
+            android:textSize="@dimen/textSizeSmall"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/fm_btnOptionsEditList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            android:text="Edit List"
+            android:textColor="@color/colorTextDarkPrimary"
+            android:textSize="@dimen/textSizeSmall" />
+
+        <TextView
+            android:id="@+id/fm_btnOptionsDeleteList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            android:text="Delete List"
+            android:textColor="@color/colorTextDarkPrimary"
+            android:textSize="@dimen/textSizeSmall" />
+
+        <TextView
+            android:id="@+id/fm_btnOptionsHideCompleted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            android:text="Hide Completed"
+            android:textColor="@color/colorTextDarkPrimary"
+            android:textSize="@dimen/textSizeSmall" />
+
+        <TextView
+            android:layout_marginBottom="16dp"
+            android:id="@+id/fm_btnOptionsDeleteCompleted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            android:text="Delete Completed"
+            android:textColor="@color/colorTextDarkPrimary"
+            android:textSize="@dimen/textSizeSmall" />
+    </LinearLayout>
+
+</layout>

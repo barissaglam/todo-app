@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="String" />
+
+        <variable
+            name="callback"
+            type="barissaglam.todo.ui.selectcolor.SelectColorAdapter.SelectColorItemCallback" />
+
+        <variable
+            name="ItemPos"
+            type="Integer" />
+
+        <variable
+            name="SelectedItemPos"
+            type="Integer" />
+
+        <import type="android.view.View" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:onClick="@{()->callback.onSelectedColor(data,ItemPos)}"
+            imageViewTint="@{data}"
+            android:id="@+id/imgColor"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/ilc_imageMargin"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:src="@drawable/circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="H,1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:visibility="@{ItemPos == SelectedItemPos ? View.VISIBLE : View.GONE}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/ilc_imageMargin"
+            android:src="@drawable/ic_check_white_24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgColor"
+            app:layout_constraintEnd_toEndOf="@+id/imgColor"
+            app:layout_constraintStart_toStartOf="@+id/imgColor"
+            app:layout_constraintTop_toTopOf="@+id/imgColor" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/bottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorItem"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/fm_contentPaddingBottom">
+
+        <TextView
+            fontPath="fonts/Ubuntu-Bold.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/fm_titlePadding"
+            android:text="Menu"
+            android:textColor="@color/colorTextDarkPrimary"
+            android:textSize="@dimen/textSizeLarge" />
+
+        <View
+            style="@style/styleLine"
+            android:layout_marginTop="@dimen/fm_topLineMarginTop" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/fd_categoriesRecycler"/>
+
+        <View
+            style="@style/styleLine"
+            android:layout_marginTop="@dimen/fm_topLineMarginTop" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/fd_btnCreateCategory"
+            style="@style/TextButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/fm_marginStartEndPage"
+            android:text="Create Category"
+            android:textSize="@dimen/textSizeSmall"
+            app:icon="@drawable/ic_add_gray_24dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/fd_btnSetting"
+            style="@style/TextButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/fm_marginStartEndPage"
+            android:text="Settings"
+            android:textSize="@dimen/textSizeSmall"
+            app:icon="@drawable/ic_settings_gray_24dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/fd_btnSendFeedback"
+            style="@style/TextButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/fm_marginStartEndPage"
+            android:text="Send Feedback"
+            android:textSize="@dimen/textSizeSmall"
+            app:icon="@drawable/ic_feedback_gray_24dp" />
+
+    </LinearLayout>
+
+</layout>

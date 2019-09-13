@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/dialog_rounded_bg"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/ftp_paddingContentTopBottom"
+        android:paddingBottom="@dimen/ftp_paddingContentTopBottom">
+
+        <TimePicker
+            android:timePickerMode="clock"
+            android:id="@+id/ftp_timePicker"
+            style="@style/MyTimePickerStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ftp_marginTopActionButtonsContainer"
+            android:gravity="end"
+            app:allowStacking="true">
+
+            <com.google.android.material.button.MaterialButton
+
+                android:id="@+id/ftp_btnCancel"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.0"
+                android:text="Cancel"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTextDarkDis"
+                android:textSize="@dimen/textSizeMedium" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/ftp_btnDone"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.0"
+                android:text="Done"
+                android:textAllCaps="false"
+                android:textSize="@dimen/textSizeMedium" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

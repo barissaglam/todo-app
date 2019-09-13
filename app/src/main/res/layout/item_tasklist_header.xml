@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="data"
+            type="String" />
+    </data>
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/ith_marginTopStartEndTitle"
+        android:paddingEnd="@dimen/ith_marginTopStartEndTitle"
+        android:orientation="vertical">
+
+        <TextView
+            setTextIfEmpty="@{@string/no_due_date}"
+            android:textColor="@color/colorTextDarkPrimary"
+            fontPath="fonts/Ubuntu-Medium.ttf"
+            android:textSize="@dimen/textSizeMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/ith_paddingTitle"
+            setTextDateWithFormat="@{data}"
+            android:text="@{data}" />
+    </LinearLayout>
+</layout>

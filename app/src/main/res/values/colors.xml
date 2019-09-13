@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#d32f2f</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorAccent">#d32f2f</color>
+
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorItem">#FFFFFF</color>
+
+    <color name="colorLightGray">#E1E1E1</color>
+
+
+    <color name="colorTextLightPrimary">#FFFFFF</color>
+    <color name="colorTextLightSec">#EEEEEE</color>
+    <color name="colorTextLightDis">#BDBDBD</color>
+
+    <color name="colorTextDarkPrimary">#000000</color>
+    <color name="colorTextDarkSec">#616161</color>
+    <color name="colorTextDarkDis">#757575</color>
+
+    <color name="hintColor">#BDBDBD</color>
+
+    <color name="colorLine">#eeeeee</color>
+
+    <color name="colorWarning">#ef6c00</color>
+    <color name="colorSuccess">#43a047</color>
+
+
+    <color name="datePickerSelectedItemColor">@color/colorPrimary</color>
+
+</resources>

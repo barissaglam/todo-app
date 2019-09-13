@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:textSize">10sp</item>
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="PageTitleStyle">
+        <item name="fontPath">fonts/Ubuntu-Bold.ttf</item>
+        <item name="android:textSize">@dimen/textSizeLarge</item>
+        <item name="android:textColor">@color/colorTextDarkPrimary</item>
+    </style>
+
+    <style name="FormItemTitleStyle">
+        <item name="android:textSize">@dimen/textSizeSmall</item>
+        <item name="android:textColor">@color/colorTextDarkDis</item>
+    </style>
+
+    <style name="FormItemSubStyle">
+        <item name="android:textSize">@dimen/textSizeSmall</item>
+        <item name="fontPath">fonts/Ubuntu-Medium.ttf</item>
+        <item name="android:textColor">@color/colorTextDarkPrimary</item>
+    </style>
+
+    <style name="DetailChipStyle" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="iconEndPadding">@dimen/ftd_chipIconEndPadding</item>
+        <item name="chipBackgroundColor">@android:color/transparent</item> <!--#fafafa-->
+        <item name="chipMinHeight">45dp</item>
+        <item name="chipStrokeColor">@color/colorLine</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="android:letterSpacing">0.0</item>
+        <item name="chipStartPadding">@dimen/ftd_chipStartEndPadding</item>
+        <item name="chipEndPadding">@dimen/ftd_chipStartEndPadding</item>
+        <item name="android:textAppearance">@style/chipTextAppearance</item>
+    </style>
+
+    <style name="CreateChipStyle" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="chipStartPadding">@dimen/createChipStartEndPadding</item>
+        <item name="chipEndPadding">@dimen/createChipStartEndPadding</item>
+        <item name="android:letterSpacing">0.0</item>
+        <item name="chipBackgroundColor">@android:color/transparent</item>
+        <item name="chipIconSize">18dp</item>
+        <item name="chipStrokeColor">@color/colorLine</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="android:textAppearance">@style/chipTextAppearance</item>
+    </style>
+
+    <style name="HomeChipStyle" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="chipMinTouchTargetSize">0dp</item>
+
+        <item name="android:letterSpacing">0.0</item>
+        <item name="chipBackgroundColor">@android:color/transparent</item>
+        <item name="chipIconSize">16dp</item>
+        <item name="android:textAppearance">@style/HomeChipTextAppearance</item>
+    </style>
+
+    <style name="HomeChipTextAppearance" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+
+    <style name="chipTextAppearance" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="android:textSize">@dimen/textSizeSmall</item>
+    </style>
+
+    <style name="TextButtonStyle" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="iconPadding">16dp</item>
+        <item name="iconTint">@color/colorTextDarkDis</item>
+        <item name="android:textColor">@color/colorTextDarkDis</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/textSizeSmall</item>
+        <item name="fontPath">fonts/Ubuntu-Regular.ttf</item>
+    </style>
+    <!-- BottomSheet Dialog S-->
+
+    <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_bottom_sheet_dialog_fragment</item>
+    </style>
+
+    <style name="BaseBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+    </style>
+
+    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog" />
+
+    <!-- BottomSheet Dialog E-->
+
+    <style name="styleLine" parent="Widget.AppCompat.TextView">
+        <item name="android:background">@color/colorLine</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <!-- Time and Date Picker S-->
+    <style name="MyTimePickerStyle" parent="Theme.AppCompat.Light">
+        <item name="android:headerBackground">#ffffff</item>
+        <item name="android:headerTimeTextAppearance">@style/TimePickerHeaderText</item>
+    </style>
+
+    <style name="TimePickerHeaderText">
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <!-- Time and Date Picker E-->
+
+    <!-- Alert Dialog S-->
+
+    <style name="MyAlertDialogStyle" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="dialogCornerRadius">@dimen/radiusOfDialog</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textSize">@dimen/textSizeOfDialog</item>
+        <item name="android:windowTitleStyle">@style/MyAlertDialogTitleStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/MyAlertDialogButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/MyAlertDialogButtonStyle</item>
+
+    </style>
+
+    <style name="MyAlertDialogButtonStyle" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:textSize">@dimen/textSizeOfDialogButton</item>
+    </style>
+
+    <style name="MyAlertDialogTitleStyle" parent="@android:style/TextAppearance.DialogWindowTitle">
+        <item name="android:textSize">@dimen/textSizeOfDialogTitle</item>
+        <item name="fontPath">fonts/Ubuntu-Medium.ttf</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:layout_marginBottom">@dimen/alertDialogTitleMarginBottom</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+
+    <!-- Alert Dialog E-->
+
+</resources>

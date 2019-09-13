@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="barissaglam.todo.ui.taskdetail.TaskDetailViewModel" />
+
+        <import type="android.text.TextUtils" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+
+                <ImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="@dimen/toolbarLeftItemMarginStart"
+                    android:layout_marginTop="@dimen/toolbarLeftItemMarginTopBottom"
+                    android:layout_marginBottom="@dimen/toolbarLeftItemMarginTopBottom"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="@dimen/toolbarItemPadding"
+                    android:src="@drawable/ic_arrow_gray_24dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <ImageButton
+                    android:id="@+id/btnDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/toolbarLeftItemMarginTopBottom"
+                    android:layout_marginEnd="@dimen/toolbarRightItemMarginEnd"
+                    android:layout_marginBottom="@dimen/toolbarLeftItemMarginTopBottom"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="@dimen/toolbarItemPadding"
+                    android:src="@drawable/ic_delete_gray_24dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/pageMarginStartEnd"
+                        android:layout_marginTop="@dimen/ftd_marginBetweenItemsNormal"
+                        android:layout_marginEnd="@dimen/pageMarginStartEnd"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+
+                        <ImageButton
+                            android:id="@+id/ftd_checkBoxDone"
+                            changeCheckState="@{viewModel.taskResult.done}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:padding="8dp"
+                            android:src="@{viewModel.taskResult.done ? @drawable/ic_check_circle_colored_24dp : @drawable/ic_radio_button_unchecked_gray_24dp}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_marginStart="8dp"
+                            android:id="@+id/ftd_edtTaskText"
+                            fontPath="fonts/Ubuntu-Medium.ttf"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center_vertical"
+                            android:hint="@string/hint_edt_new_task_name"
+                            android:text="@={viewModel.taskResult.taskName}"
+                            android:textColor="@color/colorTextDarkPrimary"
+                            android:textSize="@dimen/textSizeExtraLarge"/>
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/pageMarginStartEnd"
+                        android:layout_marginEnd="@dimen/pageMarginStartEnd"
+                        android:layout_marginBottom="@dimen/ftd_marginBetweenItemsNormal"
+                        android:orientation="horizontal">
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/ftd_stepRecyclerView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/ftd_edtAddStep" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/ftd_edtAddStep"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="24dp"
+                            android:background="@android:color/transparent"
+                            android:drawableStart="@drawable/ic_subdirectory_arrow_right_gray_24dp"
+                            android:drawablePadding="16dp"
+                            android:focusableInTouchMode="true"
+                            android:hint="Add sub task"
+                            android:imeOptions="actionDone"
+                            android:inputType="textCapSentences"
+                            android:maxLines="1"
+                            android:text="@={viewModel.stepName}"
+                            android:textColorHint="@color/colorTextDarkDis"
+                            android:textSize="@dimen/textSizeSmall"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageButton"
+                            app:layout_constraintEnd_toStartOf="@+id/imageButton"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/imageButton" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:padding="8dp"
+                            android:src="@drawable/ic_close_gray_18dp"
+                            android:visibility="invisible"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/pageMarginStartEnd"
+                        android:layout_marginTop="@dimen/ftd_marginBetweenItemsNormal"
+                        android:layout_marginEnd="@dimen/pageMarginStartEnd"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/ftd_chipDueDate"
+                            style="@style/DetailChipStyle"
+                            chipIconVisibility="@{viewModel.taskResult.taskDueDate == null || TextUtils.isEmpty(viewModel.taskResult.taskDueDate)}"
+                            setTextDateWithFormat="@{viewModel.taskResult.taskDueDate}"
+                            setTextIfEmpty="@{@string/no_due_date}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:chipCornerRadius="@dimen/chipCornerRadius"
+                            app:chipIcon="@drawable/ic_event_gray_24dp"
+                            app:chipIconTint="@color/colorTextDarkDis"
+                            app:closeIcon="@drawable/ic_close_gray_20dp"
+                            app:closeIconTint="@color/colorTextDarkDis" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/ftd_chipReminder"
+                            style="@style/DetailChipStyle"
+                            chipIconVisibility="@{viewModel.taskResult.reminderDate == null || TextUtils.isEmpty(viewModel.taskResult.reminderDate)}"
+                            setTextDateWithFormat="@{viewModel.taskResult.reminderDate}"
+                            setTextIfEmpty="@{@string/no_reminder}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/ftd_marginBetweenItemsNormal"
+                            android:textSize="@dimen/textSizeSmall"
+                            app:chipCornerRadius="@dimen/chipCornerRadius"
+                            app:chipIcon="@drawable/ic_notifications_outline_gray_24dp"
+                            app:chipIconTint="@color/colorTextDarkDis"
+                            app:closeIcon="@drawable/ic_close_gray_20dp"
+                            app:closeIconTint="@color/colorTextDarkDis" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/ftd_chipPriority"
+                            style="@style/DetailChipStyle"
+                            chipIconVisibility="@{viewModel.taskResult.priority == null || TextUtils.isEmpty(viewModel.taskResult.priority)}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/ftd_marginBetweenItemsNormal"
+                            android:text="@{viewModel.taskResult.priority == null ?  @string/no_priority : (TextUtils.isEmpty(viewModel.taskResult.priority) ? @string/no_priority : viewModel.taskResult.priority)}"
+                            android:textSize="@dimen/textSizeSmall"
+                            app:chipCornerRadius="@dimen/chipCornerRadius"
+                            app:chipIcon="@drawable/ic_priority_gray_24dp"
+                            app:chipIconTint="@color/colorTextDarkDis"
+                            app:closeIcon="@drawable/ic_close_gray_20dp"
+                            app:closeIconSize="18dp"
+                            app:closeIconTint="@color/colorTextDarkDis" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/ftd_chipList"
+                            style="@style/DetailChipStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/ftd_marginBetweenItemsNormal"
+                            android:text="@{viewModel.taskResult.categoryName == null ?  @string/not_selected : (TextUtils.isEmpty(viewModel.taskResult.categoryName) ? @string/not_selected : viewModel.taskResult.categoryName)}"
+                            android:textSize="@dimen/textSizeSmall"
+                            app:chipCornerRadius="@dimen/chipCornerRadius"
+                            app:chipIcon="@drawable/ic_list_gray_24dp"
+                            app:chipIconTint="@color/colorTextDarkDis" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

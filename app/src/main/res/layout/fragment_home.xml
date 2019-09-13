@@ -1,0 +1,107 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="barissaglam.todo.ui.home.HomeViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/pageMarginStartEnd"
+                android:paddingTop="48dp"
+                android:paddingEnd="@dimen/pageMarginStartEnd">
+
+                <TextView
+                    fontPath="fonts/Ubuntu-Medium.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Outside"
+                    android:textColor="@color/colorTextDarkPrimary"
+                    android:textSize="21sp" />
+
+                <TextView
+                    fontPath="fonts/Ubuntu-Medium.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Barış"
+                    android:textColor="@color/colorTextDarkPrimary"
+                    android:textSize="21sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@{@string/home_task_count(viewModel.totalTaskCount)}"
+                    android:textSize="12sp" />
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:max="@{viewModel.totalTaskCount}"
+                    android:progress="@{viewModel.completedTaskCount}" />
+            </LinearLayout>
+
+
+            <include
+                android:id="@+id/fh_emptyState"
+                layout="@layout/fragment_empty_state"
+                android:visibility="@{viewModel.totalTaskCount == 0 ? View.GONE : View.GONE}" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fh_homeRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="@{viewModel.completedTaskCount != 0 ? View.VISIBLE : View.GONE}">
+
+                <TextView
+                    fontPath="fonts/Ubuntu-Medium.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:padding="@dimen/ith_paddingTitle"
+                    android:paddingStart="@dimen/pageMarginStartEnd"
+                    android:paddingEnd="@dimen/pageMarginStartEnd"
+                    android:text="Completed"
+                    android:textColor="@color/colorTextDarkPrimary"
+                    android:textSize="@dimen/textSizeMedium" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fh_completedTasksRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

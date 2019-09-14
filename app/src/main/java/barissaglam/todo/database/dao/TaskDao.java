@@ -52,6 +52,9 @@ public interface TaskDao {
     @Update(onConflict = REPLACE)
     void updateTask(TaskEntity taskEntity);
 
+    @Query("DELETE FROM Tasks WHERE Tasks.categoryID=:categoryID AND Tasks.done = 1")
+    void deleteCompletedTasks(int categoryID);
+
 
     // ******************** TaskStep **
     @Insert(onConflict = REPLACE)

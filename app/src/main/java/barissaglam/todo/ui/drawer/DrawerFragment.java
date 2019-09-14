@@ -53,10 +53,11 @@ public class DrawerFragment extends BottomSheetDialogFragment implements Injecta
 
     // Normal Variables
     private AutoClearedValue<FragmentDrawerBinding> binding;
-    private HomeViewModel mViewModel;
+    private HomeViewModel homeViewModel;
+    private CategoriesAdapter mAdapter;
 
     // View Variables
-    CategoriesAdapter mAdapter;
+
 
 
     @Nullable
@@ -77,12 +78,12 @@ public class DrawerFragment extends BottomSheetDialogFragment implements Injecta
     }
 
     private void setupViewModel() {
-        mViewModel = ViewModelProviders.of(Objects.requireNonNull(getActivity()), viewModelFactory).get(HomeViewModel.class);
+        homeViewModel = ViewModelProviders.of(Objects.requireNonNull(getActivity()), viewModelFactory).get(HomeViewModel.class);
     }
 
 
     private void setupObservableViewModel() {
-        mViewModel.getCategoryListLiveData().observe(this, this::setupRecyclerView);
+        homeViewModel.getCategoryListLiveData().observe(this, this::setupRecyclerView);
     }
 
     private void setupRecyclerView(List<CategoryEntity> listEntities) {
@@ -109,7 +110,7 @@ public class DrawerFragment extends BottomSheetDialogFragment implements Injecta
     @Override
     public void onClickCategoryItem(CategoryEntity categoryEntity) {
         dismiss();
-        mViewModel.getSelectedCategoryLiveData().setValue(categoryEntity);
+        homeViewModel.getSelectedCategoryLiveData().setValue(categoryEntity);
         mAdapter.notifyDataSetChanged();
 
     }

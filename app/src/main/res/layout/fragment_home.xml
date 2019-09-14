@@ -66,7 +66,7 @@
             <include
                 android:id="@+id/fh_emptyState"
                 layout="@layout/fragment_empty_state"
-                android:visibility="@{viewModel.totalTaskCount == 0 ? View.GONE : View.GONE}" />
+                android:visibility="@{viewModel.totalTaskCount == 0 ? View.VISIBLE : View.GONE}" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/fh_homeRecyclerView"

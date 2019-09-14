@@ -29,6 +29,7 @@ import barissaglam.todo.di.Injectable;
 import barissaglam.todo.manager.LocalDataManager;
 import barissaglam.todo.model.entities.CategoryEntity;
 import barissaglam.todo.model.event.BottomAppBarEvent;
+import barissaglam.todo.model.event.DeleteCompletedTasksEvent;
 import barissaglam.todo.model.event.ListSortEvent;
 import barissaglam.todo.ui.common.NavigationController;
 import barissaglam.todo.ui.drawer.CategoriesAdapter;
@@ -110,6 +111,10 @@ public class MenuFragment extends BottomSheetDialogFragment implements Injectabl
         });
 
         // Options buttons click listeners
+        binding.get().fmBtnOptionsDeleteCompleted.setOnClickListener(v -> {
+            EventBus.getDefault().post(new DeleteCompletedTasksEvent());
+            dismiss();
+        });
     }
 
 

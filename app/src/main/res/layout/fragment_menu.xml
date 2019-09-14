@@ -94,17 +94,6 @@
             android:textSize="@dimen/textSizeSmall" />
 
         <TextView
-            android:id="@+id/fm_btnOptionsHideCompleted"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:gravity="center_vertical"
-            android:padding="16dp"
-            android:text="Hide Completed"
-            android:textColor="@color/colorTextDarkPrimary"
-            android:textSize="@dimen/textSizeSmall" />
-
-        <TextView
             android:layout_marginBottom="16dp"
             android:id="@+id/fm_btnOptionsDeleteCompleted"
             android:layout_width="match_parent"
@@ -112,7 +101,7 @@
             android:background="?attr/selectableItemBackground"
             android:gravity="center_vertical"
             android:padding="16dp"
-            android:text="Delete Completed"
+            android:text="Delete Completed Tasks"
             android:textColor="@color/colorTextDarkPrimary"
             android:textSize="@dimen/textSizeSmall" />
     </LinearLayout>

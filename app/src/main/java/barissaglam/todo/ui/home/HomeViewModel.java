@@ -29,11 +29,13 @@ public class HomeViewModel extends BaseViewModel {
     private MutableLiveData<List<TaskResult>> liveDataOfCompletedTasks;
 
     private TaskRepository taskRepository;
+    private LocalDataManager localDataManager;
 
 
     @Inject
     public HomeViewModel(TaskRepository taskRepository, CategoryRepository categoryRepository, LocalDataManager localDataManager) {
         this.taskRepository = taskRepository;
+        this.localDataManager = localDataManager;
 
         listSortType.set(localDataManager.getListSortType());
 
@@ -47,9 +49,9 @@ public class HomeViewModel extends BaseViewModel {
 
     void getAllTasks(int listID) {
         getTasksLiveData().setValue(taskRepository.getAllTaskByList(listID, false));
-        getLiveDataOfCompletedTasks().setValue(taskRepository.getAllTaskByList(listID,true));
+        getLiveDataOfCompletedTasks().setValue(taskRepository.getAllTaskByList(listID, true));
 
-        if (getTasksLiveData().getValue() != null &&getLiveDataOfCompletedTasks().getValue() != null){
+        if (getTasksLiveData().getValue() != null && getLiveDataOfCompletedTasks().getValue() != null) {
             totalTaskCount.set(getTasksLiveData().getValue().size() + getLiveDataOfCompletedTasks().getValue().size());
             completedTaskCount.set(getLiveDataOfCompletedTasks().getValue().size());
         }
@@ -60,6 +62,13 @@ public class HomeViewModel extends BaseViewModel {
 
         if (getTasksLiveData().getValue() != null)
             getTasksLiveData().getValue().add(0, taskResult);
+    }
+
+    void deleteCompletedTasks() {
+        taskRepository.deleteCompletedTasks(localDataManager.getCurrentCategoryID());
+        List<TaskResult> taskResults = new ArrayList<>();
+        getLiveDataOfCompletedTasks().setValue(taskResults);
+        completedTaskCount.set(0);
     }
 
 

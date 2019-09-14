@@ -81,19 +81,6 @@ public class HomeAdapter extends MultiTypeDataBoundAdapter implements ItemTouchH
 
     }
 
-
-    void sortByCustom(List<TaskResult> taskResults) {
-        hideDetail = false;
-        if (taskResults == null || taskResults.size() == 0)
-            return;
-
-        clear();
-        Collections.sort(taskResults, (t1, t2) -> t2.getOrder() - t1.getOrder());
-
-        for (TaskResult taskResult : taskResults)
-            addItem(taskResult);
-    }
-
     // ******************** List sort functions **/
 
     void clear() {

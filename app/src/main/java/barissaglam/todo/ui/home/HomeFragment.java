@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -31,6 +33,7 @@ import barissaglam.todo.R;
 import barissaglam.todo.databinding.FragmentHomeBinding;
 import barissaglam.todo.manager.LocalDataManager;
 import barissaglam.todo.model.event.BottomAppBarEvent;
+import barissaglam.todo.model.event.DeleteCompletedTasksEvent;
 import barissaglam.todo.model.event.ListSortEvent;
 import barissaglam.todo.model.other.CompletedTasksModel;
 import barissaglam.todo.model.result.TaskResult;
@@ -118,13 +121,13 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
 
     private void setupObservableViewModel() {
         mViewModel.getTasksLiveData().observe(getViewLifecycleOwner(), taskResults -> {
-            if (mAdapter == null)
+            if (mAdapter == null || taskResults == null || taskResults.size() == 0)
                 return;
             mAdapter.setupList(taskResults);
         });
 
         mViewModel.getLiveDataOfCompletedTasks().observe(getViewLifecycleOwner(), taskResults -> {
-            if (completedTasksAdapter == null)
+            if (completedTasksAdapter == null || taskResults == null || taskResults.size() == 0)
                 return;
             completedTasksAdapter.setupCompletedTaskList(taskResults);
         });
@@ -171,6 +174,12 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
         mAdapter.setSortType(listSortEvent.getSortType());
 
         mAdapter.setupList(mViewModel.getTasksList(localDataManager.getCurrentCategoryID()));
+    }
+
+    @Subscribe
+    public void deleteCompletedTasksEvent(DeleteCompletedTasksEvent deleteCompletedTasksEvent) {
+        mViewModel.deleteCompletedTasks();
+        completedTasksAdapter.clear();
     }
 
 

@@ -37,6 +37,9 @@ public class TaskRepository {
     public int getLargestTaskOrder() {
         return taskDao.getLargestTaskOrder();
     }
+    public void deleteCompletedTasks(int categoryID){
+        taskDao.deleteCompletedTasks(categoryID);
+    }
 
     // steps
     public void createTaskStep(TaskStepEntity taskStepEntity) {
@@ -45,10 +48,6 @@ public class TaskRepository {
 
     public List<TaskStepEntity> getTaskStepsById(int taskID) {
         return taskDao.getTaskStepsById(taskID);
-    }
-
-    public void updateTaskStepDoneStatus(Boolean done, int stepID) {
-        taskDao.updateTaskStepDoneStatus(done, stepID);
     }
 
     public TaskStepEntity getLastStep(int taskID) {
@@ -61,21 +60,5 @@ public class TaskRepository {
 
     public void updateTaskStep(TaskStepEntity taskStepEntity) {
         taskDao.updateTaskStep(taskStepEntity);
-    }
-
-
-
-
-
-
-
-
-
-
-    public class StepSortDescByOrder implements Comparator<TaskStepEntity> {
-
-        public int compare(TaskStepEntity step, TaskStepEntity step2) {
-            return step.getOrder() - step2.getOrder();
-        }
     }
 }
